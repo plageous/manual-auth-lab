@@ -1,4 +1,4 @@
-import { createUser, findUserByUsernam, validatePass } from "../services/user.service.js";
+import { createUser, findUserByUsername, validatePass } from "../services/user.service.js";
 
 const loginPage = (req, res) => {
     res.render("login", {
