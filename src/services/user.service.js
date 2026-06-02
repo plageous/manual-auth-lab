@@ -20,7 +20,7 @@ export const findUserByUsername = async (username) => {
 
 export const createUser = async (username, password, role = "user") => {
     if (!username) throw new Error("Username is required.");
-    if (!plainPassword) throw new Error("Password is required.");
+    if (!password) throw new Error("Password is required.");
     if (role !== "user" && role !== "admin") throw new Error("Invalid role.");
 
     // hash password before inserting!

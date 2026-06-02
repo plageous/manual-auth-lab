@@ -6,14 +6,16 @@ import session from 'express-session';
 const app = express();
 
 app.use(session({
-    secret:process.env.SESSION_SECRET,
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
+    /*
     cookies: {
         httpOnly: true,
         secure: false,
         maxAge: 24 * 60 * 60 * 1000
     }
+    */
 }))
 
 //view engine
