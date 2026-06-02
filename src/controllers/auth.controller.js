@@ -57,4 +57,26 @@ const login = async (req, res) => {
     return res.redirect("/dashboard");
 };
 
+export const isLoggedIn = (req, res, next) => {
+    if (!req.user) {
+        return res.redirect("/login?errors=Please log in first");
+    }
+    return next();
+};
+
+export const hasRole = (role) => {
+    return (req, res, next) => {
+        if (!req.user || req.user.role !== role) {
+            return res.redirect("/login?errors=Access denied");
+        }
+        return next();
+    };
+};
+
+export const logout = (req, res) => {
+    req.session.destory(() => {
+        return res.redirect("/login");
+    });
+};
+
 export default { loginPage, registerPage, register, login };
