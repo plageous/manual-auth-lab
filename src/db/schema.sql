@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS campus_club_hub;
-CREATE DATABASE campus_club_hub;
-USE campus_club_hub;
+DROP DATABASE IF EXISTS auth_db;
+CREATE DATABASE auth_db;
+USE auth_db;
 
 CREATE TABLE users (
     userId INT AUTO_INCREMENT PRIMARY KEY,

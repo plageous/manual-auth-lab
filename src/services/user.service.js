@@ -1,10 +1,9 @@
 import db from "../db/db.js";
 import bcrypt from 'bcrypt';
-const SALT_ROUNDS = 10;
 
 export const hashPassword = async (pass) => {
-    const salt = await bcrypt.genSalt(SALT_ROUNDS);
-    return bcrypt.hash(pass, salt);
+    const saltRounds = 10;
+    return await bcrypt.hash(plainPassword, saltRounds);
 }
 
 export const validatePass = async (pass, passHash) => {
@@ -20,7 +19,11 @@ export const findUserByUsername = async (username) => {
 };
 
 export const createUser = async (username, password, role = "user") => {
+    if (!username) throw new Error("Username is required.");
+    if (!plainPassword) throw new Error("Password is required.");
+    if (role !== "user" && role !== "admin") throw new Error("Invalid role.");
 
+    // hash password before inserting!
     const hashPass = await hashPassword(password);
 
     const [result] = await db.execute(

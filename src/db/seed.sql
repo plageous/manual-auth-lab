@@ -1,4 +1,4 @@
-USE campus_club_hub;
+USE auth_db;
 
 INSERT INTO users (username, password, role)
 VALUES
